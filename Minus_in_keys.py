@@ -4,9 +4,14 @@ import sys
 def install(package):
     subprocess.call([sys.executable, "-m", "pip", "install", package])
 
-
-install('pymorphy2')
-install('openpyxl')
+try:
+    from openpyxl import load_workbook
+    from openpyxl import Workbook
+    from openpyxl.styles import PatternFill
+    import pymorphy2
+except:
+    install('pymorphy2')
+    install('openpyxl')
 
 from openpyxl import load_workbook
 from openpyxl import Workbook
