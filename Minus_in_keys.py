@@ -1,19 +1,12 @@
+import subprocess
+import sys
+
+def install(package):
+    subprocess.call([sys.executable, "-m", "pip", "install", package])
 
 
-def install_and_import(package):
-    import importlib
-    try:
-        importlib.import_module(package)
-    except ImportError:
-        import pip
-        pip.main(['install', package])
-    finally:
-        globals()[package] = importlib.import_module(package)
-
-
-install_and_import('transliterate')
-install_and_import('pymorphy2')
-install_and_import('openpyxl')
+install('pymorphy2')
+install('openpyxl')
 
 from openpyxl import load_workbook
 from openpyxl import Workbook
